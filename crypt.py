@@ -9,20 +9,27 @@ errorMsg002 = "ERROR: File ({}) does not exists."
 errorMsg003 = 'ERROR: File ({}) already exists.'
 errorMsg004 = 'ERROR: No password for encryption provided.'
 
-# Use this function to check if a file exists or not
-def fileExists(fname = None):
+def fileExists(fname: str = None):
+    """
+    This function checks if the file name given in fname exists or not
+
+    :param str fname: file name to check
+    """
     if (fname is None):
         print(errorMsg001)
 
     else:
         return(fexists(fname))
 
-# Encrypt file
-#    infile := file to be encrypted
-#    outfile := encrypted filename
-#    password := what password are we going to use
-#    keep := do we keep infile or delete it after encrypting it (default := True)
 def encryptFile(infile: str = None, outfile: str = None, password: str = None, keep: bool = True):
+    """
+    Function to encrypt a file
+
+    :param str infile   : file to be encrypted
+    :param str outfile  : encrypted filename
+    :param str password : what password are we going to use to encrypt the file
+    :param bool keep    : do we keep infile or delete it after encrypting it (default := True)
+    """
     if ((fileExists(infile)) and (not fileExists(outfile)) and (password is not None)):
         encryptFile(infile, outfile, password)
 
@@ -44,12 +51,15 @@ def encryptFile(infile: str = None, outfile: str = None, password: str = None, k
 
         return(False)
 
-# Decrypt file
-#    infile := file to be decrypted
-#    outfile := decrypted filename
-#    password := what password are we going to use
-#    keep := do we keep infile or delete it after encrypting it (default := True)
 def decryptFile(infile = None, outfile = None, password = None, keep: bool = True):
+    """
+    Function to decrypt a file
+
+    :param str infile   : file to be decrypted
+    :param str outfile  : decrypted filename
+    :param str password : what password are we going to use to decrypt the file
+    :param bool keep    : do we keep infile or delete it after encrypting it (default := True)
+    """
     if ((fileExists(infile)) and (not fileExists(outfile)) and (password is not None)):
         decryptFile(infile, outfile, password)
 

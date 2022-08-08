@@ -11,18 +11,6 @@ from kivy.uix.popup import Popup
 
 import os
 
-class MyGridLayout(GridLayout):
-    #Initialize infinite keywords
-    def __init__(self, **kwargs):
-        # call grid layout constructor
-        super(MyGridLayout, self).__init__(**kwargs)
-
-        # set columns
-        self.cols = 1
-
-class layout(Widget):
-    pass
-
 class magicwordApp(App):
     def build(self):
         self = GridLayout()
@@ -40,6 +28,9 @@ class magicwordApp(App):
                     background_color =(2,2,2,2),
                     size_hint=(.6,.6),
                     pos_hint={'x':.4, 'y':.2})
+        
+
+
         btn2 = Button(text ="Encrypt",
                     background_color =(2,2,2,2),
                     size_hint=(.6,.6),

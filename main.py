@@ -13,9 +13,10 @@ import os
 
 class magicwordApp(App):
     def build(self):
-        self = GridLayout()
+        self = GridLayout(rows=6, cols=1)
         self.rows = 6
-        
+        self.size_hint = (0.8, 0.8)
+        self.pos_hint = {'center_y': 0.5, 'center_x': 0.5}
 
         #add widgets to window
 
@@ -25,24 +26,13 @@ class magicwordApp(App):
 
 
         btn1 = Button(text ="Select File",
-                    background_color =(2,2,2,2),
-                    size_hint=(.6,.6),
-                    pos_hint={'x':.4, 'y':.2})
-        
-
-
+                    background_color =(2,2,2,2))
         btn2 = Button(text ="Encrypt",
-                    background_color =(2,2,2,2),
-                    size_hint=(.6,.6),
-                    pos_hint={'x':.4, 'y':.4})
+                    background_color =(2,2,2,2))
         btn3 = Button(text ="Decrypt",
-                    background_color =(2,2,2,2),
-                    size_hint=(.6,.6),
-                    pos_hint={'x':.2, 'y':.2})
+                    background_color =(2,2,2,2))
         btn4 = Button(text ="Settings",
-                    background_color =(2,2,2,2),
-                    size_hint=(.6,.6),
-                    pos_hint={'x':.2, 'y':.2})
+                    background_color =(2,2,2,2))
 
         self.add_widget(btn1)
         self.add_widget(btn2)

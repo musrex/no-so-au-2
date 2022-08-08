@@ -3,6 +3,15 @@
 <Root>:
     GridLayout:
         rows: 6
+        cols: 1
         size_hint: (0.8, 0.8)
-        spacing: (0.2, 0.8)
-        padding: (0.8, 0.8)
+        pos_hint: {'center_y': 0.5, 'center_x': 0.5}
+
+<Popup>:
+    FileChooserIconView:
+        id: filechooser
+
+        GridLayout:
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()

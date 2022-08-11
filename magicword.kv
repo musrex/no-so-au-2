@@ -1,17 +1,83 @@
 #:kivy 2.1.0 
 
-<Root>:
+<MenuApp>
     GridLayout:
-        rows: 6
-        cols: 1
-        size_hint: (0.8, 0.8)
-        pos_hint: {'center_y': 0.5, 'center_x': 0.5}
+        cols:1
+        rows:6
+        size: root.width, root.height
+        spacing: 5
+        padding: 20
 
+        Image:
+            source: "logo.png" 
+        Label:
+            text: "No File Selected"
+            font_size: 20
+            color: (0,0,0,1)
+            id: selection
+        Button:
+            text: "Select File"
+            font_size: 20
+            background_color: (1,0,0,1)
+            on_release: root.show_load()
+            FileChooserIconView:
+                id: filechooser
+        Button:
+            text: "Encrypt"
+            font_size: 20
+            background_color: (1,0,0,1)
+        Button:
+            text: "Decrypt"
+            font_size: 20
+            background_color: (1,0,0,1)
+        Button:
+            text: "Settings"
+            font_size: 20
+            background_color: (1,0,0,1)
+
+        
 <LoadDialog>:
-    FileChooserIconView:
-        id: filechooser
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
 
-        GridLayout:
+        BoxLayout:
+            size_hint_y: None
+            height: 30
             Button:
                 text: "Cancel"
                 on_release: root.cancel()
+
+            Button:
+                text: "Load"
+                on_release: root.load(filechooser.path, filechooser.selection)
+
+<SaveDialog>:
+    text_input: text_input
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
+            on_selection: text_input.text = self.selection and self.selection[0] or ''
+
+        TextInput:
+            id: text_input
+            size_hint_y: None
+            height: 30
+            multiline: False
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+
+            Button:
+                text: "Save"
+                on_release: root.save(filechooser.path, text_input.text)
